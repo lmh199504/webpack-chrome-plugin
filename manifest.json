@@ -1,56 +1,57 @@
 {
 
-    "manifest_version": 2,
+	"manifest_version": 3,
 
-    "name": "webpack_plugins",
+	"name": "webpack_plugins",
 
-    "version": "1.0.0",
+	"version": "1.0.0",
 
-    "update_url":"http://upext.chrome.360.cn/intf.php?method=ExtUpdate.query",
+	"update_url": "http://upext.chrome.360.cn/intf.php?method=ExtUpdate.query",
 
-    "description": "__MSG_pluginDesc__",
+	"description": "__MSG_pluginDesc__",
 
-    "icons":
-    {
-        "16": "public/icon.png",
-        "48": "public/icon.png",
-        "128": "public/icon.png"
-    },
+	"icons": {
+		"16": "public/icon.png",
+		"48": "public/icon.png",
+		"128": "public/icon.png"
+	},
 
-    "background": {
-        "page": "background.html"
-    },
-    "chrome_url_overrides" : {
-        "newtab": "newTab.html"
-    },
-    "browser_action":
-    {
-        "default_icon": "public/icon.png",
-        "default_title": "垃圾插件",
-        "default_popup": "popup.html"
-    },
+	"background": {
+		"service_worker": "background.bundle.js"
+	},
+	"chrome_url_overrides": {
+		"newtab": "newTab.html"
+	},
+	"action": {
+		"default_icon": "public/icon.png",
+		"default_title": "垃圾插件",
+		"default_popup": "popup.html"
+	},
 
-    "options_page": "options.html",
-    "content_scripts":
-    [
-        {
+	"options_page": "options.html",
+	"content_scripts": [{
 
-            "matches": ["<all_urls>"],
-            //"js/jQuery.js","element/index.js","vue/vue.js","vue/axios.js",
-            "js": ["content_scripts.bundle.js"],
+		"matches": ["<all_urls>"],
+		//"js/jQuery.js","element/index.js","vue/vue.js","vue/axios.js",
+		"js": ["content_scripts.bundle.js"],
 
-            // "css": ["css/custom.css","css/plugin.css"],
+		// "css": ["css/custom.css","css/plugin.css"],
 
-            "run_at": "document_idle"
-        }
-    ],
-    "content_security_policy": "script-src 'self'  'unsafe-eval'  https://unpkg.com/ ; object-src 'self'  ; media-src 'self' http://ws.stream.qqmusic.qq.com/",
+		"run_at": "document_idle"
+	}],
+	"content_security_policy": {
+		"script-src": "self unsafe-eval",
+		"unsafe-eval": "object-src self",
+		"unsafe-inline": "self"
+		// "script-src 'self'  'unsafe-eval'  https://unpkg.com/ ; object-src 'self'  ; media-src 'self' http://ws.stream.qqmusic.qq.com/"
+	},
 
-    "permissions":[
-        "<all_urls>", "tabs", "activeTab", "notifications", "storage", "cookies", "background", "webNavigation", "webRequest", "webRequestBlocking"
-    ],
+	"permissions": [
+		"tabs", "activeTab", "notifications", "storage", "cookies", "background", "webNavigation",
+		"webRequest", "scripting"
+	],
 
-    "web_accessible_resources": []
+	"web_accessible_resources": []
 
-    // "default_locale": "zh_CN"
+	// "default_locale": "zh_CN"
 }

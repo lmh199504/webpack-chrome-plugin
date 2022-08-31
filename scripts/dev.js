@@ -1,6 +1,5 @@
-// 测试
-
-process.env.NODE_ENV = "development";
+// 开发
+process.env.NODE_ENV = "production";
 process.env.ASSET_PATH = "/";
 const WebpackDevServer = require("webpack-dev-server");
 const webpack = require("webpack");
