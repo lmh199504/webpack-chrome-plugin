@@ -29,6 +29,9 @@ const options = {
 					{
 						loader: "css-loader",
 					},
+					{
+						loader: "less-loader"
+					}
 				],
 			},
 			{
