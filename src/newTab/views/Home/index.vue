@@ -1,12 +1,14 @@
 <template>
 	<!-- <div class="title" @click="navAbout">home</div> -->
-	<div class="images">
+	<!-- <div class="images">
 		<img src="@newTab/static/images/bg.jpg" alt="">
-	</div>
+	</div> -->
+	<LoadingBox />
 </template>
 
 <script setup>
 	import { useRouter } from 'vue-router'
+	import LoadingBox from '@newTab/components/loadingBox.vue'
 	const router = useRouter()
 	function navAbout() {
 		router.push('/about')
